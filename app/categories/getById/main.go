@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -25,11 +26,13 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 
 	log.Println("Serching category for the following id: {}", id)
 
-	loadGetById(id)
+	cat := loadGetById(id)
+	json, _ := json.Marshal(cat)
+	response := string(json)
 
 	return events.APIGatewayProxyResponse{
 		StatusCode: 200,
-		Body:       "{}",
+		Body:       response,
 	}, nil
 
 }
@@ -65,7 +68,7 @@ func loadGetById(id string) Category {
 		panic(err)
 	}
 
-	var cat Category
+	cat := Category{}
 	err = attributevalue.UnmarshalMap(resp.Item, &cat)
 
 	if err != nil {
