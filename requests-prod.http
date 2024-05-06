@@ -1,0 +1,20 @@
+@prodURL = https://5zdlgd9hb3.execute-api.us-east-2.amazonaws.com/Prod
+
+GET {{prodURL}}/hello
+Accept: application/json
+
+###
+
+GET {{prodURL}}/categories HTTP/1.1
+Accept: application/json
+
+
+### 
+
+POST {{prodURL}}/categories HTTP/1.1
+Accept: text/plain
+Content-Type: application/json
+
+{
+  "name":"Car"
+}
