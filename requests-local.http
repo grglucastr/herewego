@@ -35,3 +35,10 @@ Content-Type: application/json
 {
   "name":"Electronics devices"
 }
+
+###
+
+DELETE http://localhost:3000/categories/1111 HTTP/1.1
+Host: localhost
+Accept: text/plain
+Content-Type: application/json
