@@ -105,6 +105,31 @@ Resources:
           Permissions:
             - Write
 
+  UpdateCategoriesFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      CodeUri: app/categories/update/
+      Handler: bootstrap
+      Runtime: provided.al2023
+      Architectures:
+        - x86_64
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /categories/{id}
+            Method: PUT
+    Connectors:
+      MyConn:
+        Properties:
+          Destination: 
+            Id: CategoriesTable
+          Permissions:
+            - Read
+            - Write
+
   CategoriesTable:
     Type: AWS::DynamoDB::Table
     DeletionPolicy: Delete

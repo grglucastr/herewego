@@ -24,3 +24,14 @@ Content-Type: application/json
 {
   "name":"Health"
 }
+
+### 
+
+PUT http://localhost:3000/categories/88682dae-85a5-4a3d-8913-531625d032f2 HTTP/1.1
+Host: localhost
+Accept: text/plain
+Content-Type: application/json
+
+{
+  "name":"Electronics devices"
+}
